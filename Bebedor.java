@@ -27,7 +27,12 @@ public class Bebedor
      * Método para pedir una copa
      */
     public void darCopa(Cubata copa){
-        alcoholSangre = alcoholSangre + copa.getGrados();
+        if (alcoholSangre >= limite){
+            System.out.println("No me des más copas");
+        }
+        else{
+            alcoholSangre = alcoholSangre + copa.getGrados();
+        }
     }
     
     /**
