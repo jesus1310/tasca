@@ -1,4 +1,3 @@
-
 /**
  * Write a description of class Cubata here.
  * 
@@ -7,27 +6,31 @@
  */
 public class Cubata
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
+    // Atributo que controla el nombre del cubata
+    private String nombre;
+    // Atributo que controla la cantidad de alcohol que tiene el cubata
+    private int grados;
+    
     /**
      * Constructor for objects of class Cubata
      */
-    public Cubata()
+    public Cubata(String nombre,int grados)
     {
-        // initialise instance variables
-        x = 0;
+        this.nombre = nombre;
+        this.grados = grados;
     }
-
+    
     /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
+     * Método para devolver los grados del cubata
      */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+    public int getGrados(){
+        return grados;
+    }
+    
+    /**
+    * Método para devolver el nombre del cubata
+    */
+    public String getNombre(){
+        return nombre;
     }
 }

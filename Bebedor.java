@@ -1,4 +1,3 @@
-
 /**
  * Write a description of class Bebedor here.
  * 
@@ -7,27 +6,47 @@
  */
 public class Bebedor
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
+    // Atributo que controla el nombre del bebedor
+    private String nombreBebedor;
+    // Atributo que controla la cantidad de alcohol en sangre que tiene el bebedor
+    private int alcoholSangre;
+    // Atributo que controla el límite de alcohol que puede tener el bebedor
+    private int limite;
+    
     /**
      * Constructor for objects of class Bebedor
      */
-    public Bebedor()
+    public Bebedor(int limite,String nombreBebedor)
     {
-        // initialise instance variables
-        x = 0;
+        this.limite = limite;
+        this.nombreBebedor = nombreBebedor;
+        alcoholSangre = 0;
     }
-
+    
     /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
+     * Método para pedir una copa
      */
-    public int sampleMethod(int y)
+    public void darCopa(Cubata copa){
+        alcoholSangre = alcoholSangre + copa.getGrados();
+    }
+    
+    /**
+     * Método para formular preguntas
+     */
+    public String preguntar(String nuevaPregunta)
     {
-        // put your code here
-        return x + y;
+        String respuesta = null;
+        if (nuevaPregunta.contains(nombreBebedor) || (alcoholSangre >= limite)){
+            respuesta = nuevaPregunta.toUpperCase();
+        }
+        else{
+            if (nuevaPregunta.length() % 2 == 0){
+                respuesta = "Sí";
+            }
+            else{
+                respuesta = "No";
+            }
+        }
+        return respuesta;
     }
 }
