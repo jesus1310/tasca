@@ -12,7 +12,11 @@ public class Bebedor
     private int alcoholSangre;
     // Atributo que controla el límite de alcohol que puede tener el bebedor
     private int limite;
-    
+    // Atributo que controla si el bebedor esta fuera del bar o dentro
+    private boolean dentro;
+    //Atributo que controla la temperatura exterior
+    private int tempCalle;
+
     /**
      * Constructor for objects of class Bebedor
      */
@@ -21,8 +25,9 @@ public class Bebedor
         this.limite = limite;
         this.nombreBebedor = nombreBebedor;
         alcoholSangre = 0;
+        dentro = true;
     }
-    
+
     /**
      * Método para pedir una copa
      */
@@ -34,7 +39,7 @@ public class Bebedor
             alcoholSangre = alcoholSangre + copa.getGrados();
         }
     }
-    
+
     /**
      * Método para formular preguntas
      */
@@ -53,5 +58,41 @@ public class Bebedor
             }
         }
         return respuesta;
+    }
+
+    /**
+     * Método que permite salir a tomar el aire
+     */
+    public void salir(Calle calle){
+        dentro = false;
+        tempCalle = calle.getTemperatura();
+    }
+
+    /**
+     * Método que permite entrar al bar
+     */
+    public void entrar(){
+        dentro = true;
+    }
+
+    /**
+     * Método que hace bajar el nivel de alcohol en sangre 
+     */
+    public void bajarNivel(){
+        if (dentro == false){
+            if (tempCalle < 0){
+                alcoholSangre = alcoholSangre - 2;
+            }
+            else{
+                alcoholSangre = alcoholSangre - 1;
+            }
+        }
+        else{
+            System.out.println("Estoy dentro, aquí no baja");
+        }
+        if (alcoholSangre <= 0){
+            entrar();
+            alcoholSangre = 0;
+        }
     }
 }
